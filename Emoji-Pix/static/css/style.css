@@ -1,0 +1,208 @@
+/* Importando a fonte Orbitron do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+/* Reset básico - remove margens e preenchimentos padrão dos elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do corpo */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte principal */
+    background-image: url('/static/background.jpeg'); /* Define uma imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir todo o fundo */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-repeat: no-repeat; /* Evita que a imagem de fundo se repita */
+    height: 100vh; /* Define a altura da tela inteira */
+    margin: 0; /* Remove margens padrão */
+    color: #FFFFFF; /* Define a cor do texto como branco */
+    display: flex; /* Utiliza flexbox para alinhar elementos */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    justify-content: center; /* Centraliza os elementos verticalmente */
+}
+
+/* Estilo para a imagem do título */
+.titulo-img {
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    width: 80%; /* Define a largura como 80% do contêiner */
+    max-width: 600px; /* Define uma largura máxima de 600px */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
+    position: absolute;
+    top: 20px; /* Posiciona a imagem a 20px do topo */
+    left: 50%; /* Posiciona a imagem no centro da tela */
+    transform: translateX(-50%); /* Corrige o deslocamento horizontal */
+}
+
+/* Estilo do saldo */
+.balance {
+    position: absolute;
+    top: 20px; /* Posiciona no topo */
+    right: 20px; /* Posiciona no canto direito */
+    font-size: 1.3em; /* Aumenta o tamanho da fonte */
+    color: #D8D8D8; /* Define a cor como prata */
+    padding: 5px 10px; /* Adiciona preenchimento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-shadow: 2px 2px 4px #4B0082; /* Adiciona sombra ao texto */
+}
+
+/* Contêiner da máquina de caça-níquel */
+.slot-machine-container {
+    display: flex; /* Exibe os slots em linha com flexbox */
+    justify-content: center; /* Centraliza os slots horizontalmente */
+    align-items: center; /* Alinha os slots verticalmente */
+    position: fixed; /* Fixa o contêiner na tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centralização correta */
+    margin-bottom: 25px; /* Espaço entre slots e multiplicadores */
+    height: 200px; /* Define a altura do contêiner */
+    width: auto; /* Define a largura automática */
+    z-index: 10; /* Prioriza este contêiner acima de outros elementos */
+}
+
+/* Estilo para cada slot de emoji */
+.slot {
+    width: 200px; /* Define a largura de cada slot */
+    height: 200px; /* Define a altura de cada slot */
+    border: 3px solid #FFD700; /* Borda dourada ao redor do slot */
+    background: #b8860b; /* Cor de fundo dourada */
+    display: flex; /* Flexbox para centralizar o emoji */
+    align-items: center; /* Centraliza o emoji verticalmente */
+    justify-content: center; /* Centraliza o emoji horizontalmente */
+    margin: 0 5px; /* Espaçamento entre os slots */
+    font-size: 100px; /* Define o tamanho dos emojis */
+    box-shadow: 0 0 15px #FFD700, 0 0 30px #FFA500; /* Efeito de brilho neon */
+    border-radius: 15px; /* Bordas arredondadas */
+    transition: transform 0.5s ease; /* Suaviza a transição ao parar */
+}
+
+/* Controles do jogo (input de aposta e botão) */
+.controls {
+    display: flex; /* Exibe os controles lado a lado */
+    justify-content: center; /* Centraliza os controles horizontalmente */
+    margin-top: 20px; /* Espaçamento acima dos controles */
+    position: absolute;
+    top: calc(50% + 130px); /* Ajusta a posição abaixo dos slots */
+    left: 50%; 
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+}
+
+/* Estilização do input de aposta */
+input[type="number"] {
+    padding: 8px 20px;
+    margin-right: 12px; /* Espaço à direita do input */
+    border: 2px solid #FFA500; /* Borda laranja neon */
+    border-radius: 3px; /* Bordas arredondadas */
+    font-size: 0.8em;
+    width: 155px; /* Largura do campo de entrada */
+    background-color: #FFFFFF;
+    color: #4B0082; /* Texto roxo escuro */
+    box-shadow: 0 0 5px #FFA500; /* Efeito de brilho na borda */
+}
+
+/* Estilização do botão de jogar */
+button {
+    padding: 10px 20px;
+    background-color: #00FF00; /* Cor de fundo verde neon */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    font-size: 1em;
+    text-shadow: 2px 2px 4px #4B0082;
+    box-shadow: 0 0 10px #00FF00; /* Efeito neon ao redor do botão */
+}
+
+/* Efeito hover no botão */
+button:hover {
+    background-color: #45a049; /* Sutil mudança de cor ao passar o mouse */
+}
+
+/* Estilização dos multiplicadores */
+.multipliers {
+    display: flex;
+    justify-content: flex-start; /* Alinha os multiplicadores à esquerda */
+    align-items: center;
+    position: absolute;
+    top: 50%; /* Centraliza verticalmente */
+    left: 5%; /* Posiciona à esquerda da tela */
+    transform: translateY(-50%); /* Corrige a centralização vertical */
+}
+
+/* Colunas de emojis e multiplicadores */
+.emoji-column, .multiplier-column {
+    display: flex;
+    flex-direction: column; /* Alinha os elementos em coluna */
+    align-items: flex-end; /* Alinha o conteúdo à direita */
+    margin: 0 10px; /* Espaçamento entre as colunas */
+}
+
+/* Estilo para cada linha de emoji e multiplicador */
+.emoji-column p, .multiplier-column p {
+    font-size: 3em; /* Define o tamanho dos emojis e multiplicadores */
+    margin: 10px 0; /* Espaçamento vertical */
+    min-width: 50px; /* Largura mínima para alinhamento uniforme */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo adicional para os multiplicadores */
+.multiplier-column p {
+    color: #D8D8D8; /* Cor de texto prata */
+    padding: 5px 10px; /* Adiciona preenchimento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-shadow: 2px 2px 4px #4B0082; /* Sombra no texto */
+}
+
+/* Estilo para o resultado */
+#result {
+    font-size: 25px; /* Tamanho do texto */
+    color: #FFFFFF; /* Cor do texto branca */
+    position: absolute; /* Posicionamento absoluto */
+    top: calc(50% + 210px); /* Posiciona abaixo dos slots */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Corrige a centralização horizontal */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Animação da chuva de emojis */
+@keyframes rain {
+    0% {
+        transform: translateY(-100%); /* Inicia fora da tela */
+        opacity: 1; /* Totalmente visível no início */
+    }
+    100% {
+        transform: translateY(100vh); /* Desce até a parte inferior da tela */
+        opacity: 1; /* Mantém visível até o fim */
+    }
+}
+
+.emoji {
+    position: absolute;
+    font-size: 7rem; /* Tamanho dos emojis na chuva */
+    opacity: 1; /* Totalmente visível */
+    animation: rain 4s linear forwards; /* Animação de queda dos emojis */
+    pointer-events: none; /* Emojis não interferem com cliques */
+}
+
+/* Animação de pulsar */
+.pulsate {
+    animation: pulsate-animation 0.5s ease-in-out infinite;
+}
+
+/* Definição da animação de pulsar */
+@keyframes pulsate-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta ligeiramente */
+    }
+    100% {
+        transform: scale(1); /* Retorna ao tamanho original */
+    }
+}
